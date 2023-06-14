@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Muhamet">
+    <title>Free Songs</title>
+    <link rel="icon" href="icons8-music-96.png">
+</head>
+<style>
+    h1 {
+        text-align: center;
+        color: rgb(224, 128, 18);
+    }
+    
+    body { 
+        background: linear-gradient(to left, #912e2e, #446583, #282896);
+        background-image: url("pexels-wendy-wei-1190297.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+     }
+    .search-form {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .search-form input[type="text"] {
+        padding: 5px;
+        width: 200px;
+    }
+    
+    .search-form input[type="submit"] {
+        padding: 5px 10px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+    
+    .search-results {
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+    .search-results a {
+        display: block;
+        margin-bottom: 10px;
+        text-decoration: none;
+        color: yellow;
+    }
+    footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: right;
+    color: white;
+} 
+</style>
+<body>
+    <h1>DOWNLOAD FREE MP3 SONGS</h1>
+    
+    <div class="search-form">
+        <form id="search-form" method="GET">
+            <input type="text" name="search" id="search-input" placeholder="Search for songs...">
+            <input type="submit" value="Search">
+        </form>
+    </div>
+    
+    <div class="search-results" id="search-results">
+
+    </div>
+
+    <script>
+        document.getElementById('search-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            var searchInput = document.getElementById('search-input').value;
+            var searchResults = document.getElementById('search-results');
+            
+            searchResults.innerHTML = '';
+            
+            if (searchInput.trim() !== '') {
+                var songLinks = [
+                    { title: "Alan Walker - Faded.mp3", url: "Alan Walker - Faded.mp3" },
+                    { title: "Alan Walker - Alone.mp3", url: "Alan Walker - Alone.mp3" },
+                    { title: "Alan Walker - The Spectre.mp3", url: "Alan Walker - The Spectre.mp3" },
+                    { title: "Alan Walker - Darkside.mp3", url: "Alan Walker - Darkside.mp3"},
+                    { title: "Katy Perry ft Kanye West - E.T..mp3", url: "Katy Perry ft Kanye West - E.T..mp3"},
+                ];
+                
+                var filteredLinks = songLinks.filter(function(link) {
+                    return link.title.toLowerCase().includes(searchInput.toLowerCase());
+                });
+                
+                filteredLinks.forEach(function(link) {
+                    var songLink = document.createElement('a');
+                    songLink.href = link.url;
+                    songLink.download = '';
+                    songLink.textContent = 'Download: ' + link.title;
+                    searchResults.appendChild(songLink);
+                });
+            }
+        });
+    </script>
+   <footer align="center">
+    <mark><big><b><i>Author: Muhamet</i> </b> </big></mark>
+    <br>
+  <mark><b><big>(&copy; All rights reserved - 2023)</big></b></mark> 
+    </footer>
+</body>
+</html>
